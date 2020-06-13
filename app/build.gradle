@@ -1,10 +1,24 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/gzepeda1/OneDrive/Documentos/MVP/2020 Tech Community Day/Keystorefile')
+            keyAlias 'MyAndroidKey'
+            storePassword 'elnekis83'
+            keyPassword 'elnekis83'
+        }
+        release {
+            storeFile file('/Users/gzepeda1/OneDrive/Documentos/MVP/2020 Tech Community Day/Keystorefile')
+            storePassword 'elnekis83'
+            keyAlias 'MyAndroidKey'
+            keyPassword 'elnekis83'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "ms.appcenter.sampleapp.android"
+        applicationId "com.gzepeda.sampleapp.android"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
@@ -20,6 +34,10 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
