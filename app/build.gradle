@@ -1,14 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        debug {
-            storeFile file('/Users/gzepeda1/OneDrive/Documentos/MVP/Net Conf latam 2020/Keystorefile2.jks')
-            storePassword 'notelodigo'
-            keyAlias 'appcenter'
-            keyPassword 'notelodigo'
-        }
-    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -23,11 +15,6 @@ android {
         signingConfig signingConfigs.debug
         if (System.getenv("APPCENTER_APP_SECRET") != null) {
             buildConfigField("String", "APPCENTER_APP_SECRET", "\"${System.getenv("APPCENTER_APP_SECRET")}\"")
-        }
-    }
-    buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
